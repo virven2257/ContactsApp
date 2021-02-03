@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsAppUI", "ContactsAppUI\ContactsAppUI.csproj", "{AD341786-7AEE-44FE-B55B-189B3E707A61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp", "ContactsApp\ContactsApp.csproj", "{8147554B-E0BF-4823-84F6-DA8A6D49E213}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{AD341786-7AEE-44FE-B55B-189B3E707A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD341786-7AEE-44FE-B55B-189B3E707A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD341786-7AEE-44FE-B55B-189B3E707A61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8147554B-E0BF-4823-84F6-DA8A6D49E213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8147554B-E0BF-4823-84F6-DA8A6D49E213}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8147554B-E0BF-4823-84F6-DA8A6D49E213}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8147554B-E0BF-4823-84F6-DA8A6D49E213}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
