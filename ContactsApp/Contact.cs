@@ -101,7 +101,8 @@ namespace ContactsApp
             {
                 if ((value < MinDate) && (value > DateTime.Today))
                     throw new ArgumentException("Некорректная дата рождения! Она не может быть раньше, чем "
-                                                + MinDate.ToString("d") + ", или позже, чем сегодняшний день."); 
+                                                + MinDate.ToString("d") + ", или позже, чем сегодняшний день.");
+                _birthDate = value;
             }
         }
         

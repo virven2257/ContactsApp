@@ -27,6 +27,7 @@ namespace ContactsApp
                     throw  new ArgumentException("Неправильный формат номера! " +
                                                  "Он должен начинаться с 7 и содержать " +
                                                  Length.ToString() + " цифр.");
+                _number = value;
             }
         }
         

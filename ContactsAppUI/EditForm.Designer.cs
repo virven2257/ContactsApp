@@ -54,19 +54,20 @@ namespace ContactsAppUI
             this.closeButton.Anchor =
                 ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom |
                                                        System.Windows.Forms.AnchorStyles.Right)));
-            this.closeButton.Location = new System.Drawing.Point(444, 214);
+            this.closeButton.Location = new System.Drawing.Point(444, 213);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(89, 24);
             this.closeButton.TabIndex = 0;
             this.closeButton.Text = "Cancel";
             this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // okButton
             // 
             this.okButton.Anchor =
                 ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom |
                                                        System.Windows.Forms.AnchorStyles.Right)));
-            this.okButton.Location = new System.Drawing.Point(349, 214);
+            this.okButton.Location = new System.Drawing.Point(349, 213);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(89, 24);
             this.okButton.TabIndex = 1;
@@ -128,10 +129,10 @@ namespace ContactsAppUI
             // nameLabel
             // 
             this.nameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.nameLabel.Location = new System.Drawing.Point(2, 36);
+            this.nameLabel.Location = new System.Drawing.Point(3, 36);
             this.nameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(66, 18);
+            this.nameLabel.Size = new System.Drawing.Size(65, 18);
             this.nameLabel.TabIndex = 8;
             this.nameLabel.Text = "Name:";
             this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -149,10 +150,10 @@ namespace ContactsAppUI
             // vkLabel
             // 
             this.vkLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.vkLabel.Location = new System.Drawing.Point(2, 157);
+            this.vkLabel.Location = new System.Drawing.Point(3, 157);
             this.vkLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.vkLabel.Name = "vkLabel";
-            this.vkLabel.Size = new System.Drawing.Size(66, 18);
+            this.vkLabel.Size = new System.Drawing.Size(65, 18);
             this.vkLabel.TabIndex = 16;
             this.vkLabel.Text = "vk.com:";
             this.vkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -170,10 +171,10 @@ namespace ContactsAppUI
             // birthdayLabel
             // 
             this.birthdayLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.birthdayLabel.Location = new System.Drawing.Point(2, 66);
+            this.birthdayLabel.Location = new System.Drawing.Point(3, 66);
             this.birthdayLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.birthdayLabel.Name = "birthdayLabel";
-            this.birthdayLabel.Size = new System.Drawing.Size(66, 18);
+            this.birthdayLabel.Size = new System.Drawing.Size(65, 18);
             this.birthdayLabel.TabIndex = 9;
             this.birthdayLabel.Text = "Birthday:";
             this.birthdayLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -181,10 +182,10 @@ namespace ContactsAppUI
             // emailLabel
             // 
             this.emailLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.emailLabel.Location = new System.Drawing.Point(2, 126);
+            this.emailLabel.Location = new System.Drawing.Point(3, 126);
             this.emailLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(66, 18);
+            this.emailLabel.Size = new System.Drawing.Size(65, 18);
             this.emailLabel.TabIndex = 15;
             this.emailLabel.Text = "E-mail:";
             this.emailLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -202,10 +203,10 @@ namespace ContactsAppUI
             // phoneLabel
             // 
             this.phoneLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.phoneLabel.Location = new System.Drawing.Point(2, 96);
+            this.phoneLabel.Location = new System.Drawing.Point(3, 96);
             this.phoneLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(66, 18);
+            this.phoneLabel.Size = new System.Drawing.Size(65, 18);
             this.phoneLabel.TabIndex = 12;
             this.phoneLabel.Text = "Phone:";
             this.phoneLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -233,10 +234,10 @@ namespace ContactsAppUI
             // surnameLabel
             // 
             this.surnameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.surnameLabel.Location = new System.Drawing.Point(2, 6);
+            this.surnameLabel.Location = new System.Drawing.Point(3, 6);
             this.surnameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.surnameLabel.Name = "surnameLabel";
-            this.surnameLabel.Size = new System.Drawing.Size(66, 18);
+            this.surnameLabel.Size = new System.Drawing.Size(65, 18);
             this.surnameLabel.TabIndex = 5;
             this.surnameLabel.Text = "Surname:";
             this.surnameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

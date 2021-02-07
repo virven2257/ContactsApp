@@ -75,6 +75,7 @@ namespace ContactsAppUI
             this.addButton.TabIndex = 0;
             this.addButton.Text = "a";
             this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // editButton
             // 
@@ -117,7 +118,7 @@ namespace ContactsAppUI
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -160,7 +161,7 @@ namespace ContactsAppUI
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
@@ -177,6 +178,8 @@ namespace ContactsAppUI
             this.contactsListBox.ScrollAlwaysVisible = true;
             this.contactsListBox.Size = new System.Drawing.Size(245, 334);
             this.contactsListBox.TabIndex = 5;
+            this.contactsListBox.SelectedIndexChanged +=
+                new System.EventHandler(this.contactsListBox_SelectedIndexChanged);
             // 
             // findTextBox
             // 
@@ -204,6 +207,7 @@ namespace ContactsAppUI
             this.surnameTextBox.Anchor =
                 ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left |
                                                        System.Windows.Forms.AnchorStyles.Right)));
+            this.surnameTextBox.Enabled = false;
             this.surnameTextBox.Location = new System.Drawing.Point(73, 3);
             this.surnameTextBox.Name = "surnameTextBox";
             this.surnameTextBox.Size = new System.Drawing.Size(416, 23);
@@ -214,6 +218,7 @@ namespace ContactsAppUI
             this.nameTextBox.Anchor =
                 ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left |
                                                        System.Windows.Forms.AnchorStyles.Right)));
+            this.nameTextBox.Enabled = false;
             this.nameTextBox.Location = new System.Drawing.Point(73, 33);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(416, 23);
@@ -244,6 +249,7 @@ namespace ContactsAppUI
             // birthdayDateTimePicker
             // 
             this.birthdayDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.birthdayDateTimePicker.Enabled = false;
             this.birthdayDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.birthdayDateTimePicker.Location = new System.Drawing.Point(72, 63);
             this.birthdayDateTimePicker.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -267,6 +273,7 @@ namespace ContactsAppUI
             this.emailTextBox.Anchor =
                 ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left |
                                                        System.Windows.Forms.AnchorStyles.Right)));
+            this.emailTextBox.Enabled = false;
             this.emailTextBox.Location = new System.Drawing.Point(73, 123);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(416, 23);
@@ -277,6 +284,7 @@ namespace ContactsAppUI
             this.vkTextBox.Anchor =
                 ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left |
                                                        System.Windows.Forms.AnchorStyles.Right)));
+            this.vkTextBox.Enabled = false;
             this.vkTextBox.Location = new System.Drawing.Point(73, 155);
             this.vkTextBox.Name = "vkTextBox";
             this.vkTextBox.Size = new System.Drawing.Size(416, 23);
@@ -400,6 +408,7 @@ namespace ContactsAppUI
             this.phoneMaskedTextBox.Anchor =
                 ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left |
                                                        System.Windows.Forms.AnchorStyles.Right)));
+            this.phoneMaskedTextBox.Enabled = false;
             this.phoneMaskedTextBox.Location = new System.Drawing.Point(73, 93);
             this.phoneMaskedTextBox.Mask = "+7 (000) 000-00-00";
             this.phoneMaskedTextBox.Name = "phoneMaskedTextBox";

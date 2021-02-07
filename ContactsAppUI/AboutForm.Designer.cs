@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace ContactsAppUI
 {
@@ -60,7 +61,7 @@ namespace ContactsAppUI
             this.versionLabel.Name = "versionLabel";
             this.versionLabel.Size = new System.Drawing.Size(112, 22);
             this.versionLabel.TabIndex = 1;
-            this.versionLabel.Text = "v. ы.ы.ы";
+            this.versionLabel.Text = "v. " + Application.ProductVersion;
             // 
             // rightsLabel
             // 
