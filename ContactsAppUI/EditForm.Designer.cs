@@ -31,249 +31,249 @@ namespace ContactsAppUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.closeButton = new System.Windows.Forms.Button();
-            this.okButton = new System.Windows.Forms.Button();
-            this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.phoneMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.nameLabel = new System.Windows.Forms.Label();
-            this.vkTextBox = new System.Windows.Forms.TextBox();
-            this.vkLabel = new System.Windows.Forms.Label();
-            this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.birthdayLabel = new System.Windows.Forms.Label();
-            this.emailLabel = new System.Windows.Forms.Label();
-            this.birthdayDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.phoneLabel = new System.Windows.Forms.Label();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.surnameTextBox = new System.Windows.Forms.TextBox();
-            this.surnameLabel = new System.Windows.Forms.Label();
-            this.tableLayoutPanel.SuspendLayout();
+            this.CloseButton = new System.Windows.Forms.Button();
+            this.OkButton = new System.Windows.Forms.Button();
+            this.TableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.PhoneMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.NameLabel = new System.Windows.Forms.Label();
+            this.VkTextBox = new System.Windows.Forms.TextBox();
+            this.VkLabel = new System.Windows.Forms.Label();
+            this.EmailTextBox = new System.Windows.Forms.TextBox();
+            this.BirthdayLabel = new System.Windows.Forms.Label();
+            this.EmailLabel = new System.Windows.Forms.Label();
+            this.BirthdayDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.PhoneLabel = new System.Windows.Forms.Label();
+            this.NameTextBox = new System.Windows.Forms.TextBox();
+            this.SurnameTextBox = new System.Windows.Forms.TextBox();
+            this.SurnameLabel = new System.Windows.Forms.Label();
+            this.TableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // closeButton
             // 
-            this.closeButton.Anchor =
+            this.CloseButton.Anchor =
                 ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom |
                                                        System.Windows.Forms.AnchorStyles.Right)));
-            this.closeButton.Location = new System.Drawing.Point(444, 213);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(89, 24);
-            this.closeButton.TabIndex = 0;
-            this.closeButton.Text = "Cancel";
-            this.closeButton.UseVisualStyleBackColor = true;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            this.CloseButton.Location = new System.Drawing.Point(444, 213);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(89, 24);
+            this.CloseButton.TabIndex = 0;
+            this.CloseButton.Text = "Cancel";
+            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // okButton
             // 
-            this.okButton.Anchor =
+            this.OkButton.Anchor =
                 ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom |
                                                        System.Windows.Forms.AnchorStyles.Right)));
-            this.okButton.Location = new System.Drawing.Point(349, 213);
-            this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(89, 24);
-            this.okButton.TabIndex = 1;
-            this.okButton.Text = "OK";
-            this.okButton.UseVisualStyleBackColor = true;
+            this.OkButton.Location = new System.Drawing.Point(349, 213);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(89, 24);
+            this.OkButton.TabIndex = 1;
+            this.OkButton.Text = "OK";
+            this.OkButton.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel
             // 
-            this.tableLayoutPanel.Anchor =
+            this.TableLayoutPanel.Anchor =
                 ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top |
                                                         System.Windows.Forms.AnchorStyles.Left) |
                                                        System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel.ColumnCount = 2;
-            this.tableLayoutPanel.ColumnStyles.Add(
+            this.TableLayoutPanel.ColumnCount = 2;
+            this.TableLayoutPanel.ColumnStyles.Add(
                 new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel.ColumnStyles.Add(
+            this.TableLayoutPanel.ColumnStyles.Add(
                 new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.Controls.Add(this.phoneMaskedTextBox, 1, 3);
-            this.tableLayoutPanel.Controls.Add(this.nameLabel, 0, 1);
-            this.tableLayoutPanel.Controls.Add(this.vkTextBox, 1, 5);
-            this.tableLayoutPanel.Controls.Add(this.vkLabel, 0, 5);
-            this.tableLayoutPanel.Controls.Add(this.emailTextBox, 1, 4);
-            this.tableLayoutPanel.Controls.Add(this.birthdayLabel, 0, 2);
-            this.tableLayoutPanel.Controls.Add(this.emailLabel, 0, 4);
-            this.tableLayoutPanel.Controls.Add(this.birthdayDateTimePicker, 1, 2);
-            this.tableLayoutPanel.Controls.Add(this.phoneLabel, 0, 3);
-            this.tableLayoutPanel.Controls.Add(this.nameTextBox, 1, 1);
-            this.tableLayoutPanel.Controls.Add(this.surnameTextBox, 1, 0);
-            this.tableLayoutPanel.Controls.Add(this.surnameLabel, 0, 0);
-            this.tableLayoutPanel.Location = new System.Drawing.Point(12, 12);
-            this.tableLayoutPanel.Name = "tableLayoutPanel";
-            this.tableLayoutPanel.RowCount = 6;
-            this.tableLayoutPanel.RowStyles.Add(
+            this.TableLayoutPanel.Controls.Add(this.PhoneMaskedTextBox, 1, 3);
+            this.TableLayoutPanel.Controls.Add(this.NameLabel, 0, 1);
+            this.TableLayoutPanel.Controls.Add(this.VkTextBox, 1, 5);
+            this.TableLayoutPanel.Controls.Add(this.VkLabel, 0, 5);
+            this.TableLayoutPanel.Controls.Add(this.EmailTextBox, 1, 4);
+            this.TableLayoutPanel.Controls.Add(this.BirthdayLabel, 0, 2);
+            this.TableLayoutPanel.Controls.Add(this.EmailLabel, 0, 4);
+            this.TableLayoutPanel.Controls.Add(this.BirthdayDateTimePicker, 1, 2);
+            this.TableLayoutPanel.Controls.Add(this.PhoneLabel, 0, 3);
+            this.TableLayoutPanel.Controls.Add(this.NameTextBox, 1, 1);
+            this.TableLayoutPanel.Controls.Add(this.SurnameTextBox, 1, 0);
+            this.TableLayoutPanel.Controls.Add(this.SurnameLabel, 0, 0);
+            this.TableLayoutPanel.Location = new System.Drawing.Point(12, 12);
+            this.TableLayoutPanel.Name = "TableLayoutPanel";
+            this.TableLayoutPanel.RowCount = 6;
+            this.TableLayoutPanel.RowStyles.Add(
                 new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel.RowStyles.Add(
+            this.TableLayoutPanel.RowStyles.Add(
                 new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel.RowStyles.Add(
+            this.TableLayoutPanel.RowStyles.Add(
                 new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel.RowStyles.Add(
+            this.TableLayoutPanel.RowStyles.Add(
                 new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel.RowStyles.Add(
+            this.TableLayoutPanel.RowStyles.Add(
                 new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel.RowStyles.Add(
+            this.TableLayoutPanel.RowStyles.Add(
                 new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(521, 183);
-            this.tableLayoutPanel.TabIndex = 19;
+            this.TableLayoutPanel.Size = new System.Drawing.Size(521, 183);
+            this.TableLayoutPanel.TabIndex = 19;
             // 
             // phoneMaskedTextBox
             // 
-            this.phoneMaskedTextBox.Anchor =
+            this.PhoneMaskedTextBox.Anchor =
                 ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left |
                                                        System.Windows.Forms.AnchorStyles.Right)));
-            this.phoneMaskedTextBox.Location = new System.Drawing.Point(73, 93);
-            this.phoneMaskedTextBox.Mask = "+7 (000) 000-00-00";
-            this.phoneMaskedTextBox.Name = "phoneMaskedTextBox";
-            this.phoneMaskedTextBox.Size = new System.Drawing.Size(445, 23);
-            this.phoneMaskedTextBox.TabIndex = 19;
+            this.PhoneMaskedTextBox.Location = new System.Drawing.Point(73, 93);
+            this.PhoneMaskedTextBox.Mask = "+7 (000) 000-00-00";
+            this.PhoneMaskedTextBox.Name = "PhoneMaskedTextBox";
+            this.PhoneMaskedTextBox.Size = new System.Drawing.Size(445, 23);
+            this.PhoneMaskedTextBox.TabIndex = 19;
             // 
             // nameLabel
             // 
-            this.nameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.nameLabel.Location = new System.Drawing.Point(3, 36);
-            this.nameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(65, 18);
-            this.nameLabel.TabIndex = 8;
-            this.nameLabel.Text = "Name:";
-            this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.NameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.NameLabel.Location = new System.Drawing.Point(3, 36);
+            this.NameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(65, 18);
+            this.NameLabel.TabIndex = 8;
+            this.NameLabel.Text = "Name:";
+            this.NameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // vkTextBox
             // 
-            this.vkTextBox.Anchor =
+            this.VkTextBox.Anchor =
                 ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left |
                                                        System.Windows.Forms.AnchorStyles.Right)));
-            this.vkTextBox.Location = new System.Drawing.Point(73, 155);
-            this.vkTextBox.Name = "vkTextBox";
-            this.vkTextBox.Size = new System.Drawing.Size(445, 23);
-            this.vkTextBox.TabIndex = 14;
+            this.VkTextBox.Location = new System.Drawing.Point(73, 155);
+            this.VkTextBox.Name = "VkTextBox";
+            this.VkTextBox.Size = new System.Drawing.Size(445, 23);
+            this.VkTextBox.TabIndex = 14;
             // 
             // vkLabel
             // 
-            this.vkLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.vkLabel.Location = new System.Drawing.Point(3, 157);
-            this.vkLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.vkLabel.Name = "vkLabel";
-            this.vkLabel.Size = new System.Drawing.Size(65, 18);
-            this.vkLabel.TabIndex = 16;
-            this.vkLabel.Text = "vk.com:";
-            this.vkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.VkLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.VkLabel.Location = new System.Drawing.Point(3, 157);
+            this.VkLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.VkLabel.Name = "VkLabel";
+            this.VkLabel.Size = new System.Drawing.Size(65, 18);
+            this.VkLabel.TabIndex = 16;
+            this.VkLabel.Text = "vk.com:";
+            this.VkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // emailTextBox
             // 
-            this.emailTextBox.Anchor =
+            this.EmailTextBox.Anchor =
                 ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left |
                                                        System.Windows.Forms.AnchorStyles.Right)));
-            this.emailTextBox.Location = new System.Drawing.Point(73, 123);
-            this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(445, 23);
-            this.emailTextBox.TabIndex = 13;
+            this.EmailTextBox.Location = new System.Drawing.Point(73, 123);
+            this.EmailTextBox.Name = "EmailTextBox";
+            this.EmailTextBox.Size = new System.Drawing.Size(445, 23);
+            this.EmailTextBox.TabIndex = 13;
             // 
             // birthdayLabel
             // 
-            this.birthdayLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.birthdayLabel.Location = new System.Drawing.Point(3, 66);
-            this.birthdayLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.birthdayLabel.Name = "birthdayLabel";
-            this.birthdayLabel.Size = new System.Drawing.Size(65, 18);
-            this.birthdayLabel.TabIndex = 9;
-            this.birthdayLabel.Text = "Birthday:";
-            this.birthdayLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BirthdayLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.BirthdayLabel.Location = new System.Drawing.Point(3, 66);
+            this.BirthdayLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.BirthdayLabel.Name = "BirthdayLabel";
+            this.BirthdayLabel.Size = new System.Drawing.Size(65, 18);
+            this.BirthdayLabel.TabIndex = 9;
+            this.BirthdayLabel.Text = "Birthday:";
+            this.BirthdayLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // emailLabel
             // 
-            this.emailLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.emailLabel.Location = new System.Drawing.Point(3, 126);
-            this.emailLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(65, 18);
-            this.emailLabel.TabIndex = 15;
-            this.emailLabel.Text = "E-mail:";
-            this.emailLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.EmailLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.EmailLabel.Location = new System.Drawing.Point(3, 126);
+            this.EmailLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.EmailLabel.Name = "EmailLabel";
+            this.EmailLabel.Size = new System.Drawing.Size(65, 18);
+            this.EmailLabel.TabIndex = 15;
+            this.EmailLabel.Text = "E-mail:";
+            this.EmailLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // birthdayDateTimePicker
             // 
-            this.birthdayDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.birthdayDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.birthdayDateTimePicker.Location = new System.Drawing.Point(72, 63);
-            this.birthdayDateTimePicker.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.birthdayDateTimePicker.Name = "birthdayDateTimePicker";
-            this.birthdayDateTimePicker.Size = new System.Drawing.Size(102, 23);
-            this.birthdayDateTimePicker.TabIndex = 10;
+            this.BirthdayDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.BirthdayDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.BirthdayDateTimePicker.Location = new System.Drawing.Point(72, 63);
+            this.BirthdayDateTimePicker.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.BirthdayDateTimePicker.Name = "BirthdayDateTimePicker";
+            this.BirthdayDateTimePicker.Size = new System.Drawing.Size(102, 23);
+            this.BirthdayDateTimePicker.TabIndex = 10;
             // 
             // phoneLabel
             // 
-            this.phoneLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.phoneLabel.Location = new System.Drawing.Point(3, 96);
-            this.phoneLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(65, 18);
-            this.phoneLabel.TabIndex = 12;
-            this.phoneLabel.Text = "Phone:";
-            this.phoneLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.PhoneLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.PhoneLabel.Location = new System.Drawing.Point(3, 96);
+            this.PhoneLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PhoneLabel.Name = "PhoneLabel";
+            this.PhoneLabel.Size = new System.Drawing.Size(65, 18);
+            this.PhoneLabel.TabIndex = 12;
+            this.PhoneLabel.Text = "Phone:";
+            this.PhoneLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Anchor =
+            this.NameTextBox.Anchor =
                 ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left |
                                                        System.Windows.Forms.AnchorStyles.Right)));
-            this.nameTextBox.Location = new System.Drawing.Point(73, 33);
-            this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(445, 23);
-            this.nameTextBox.TabIndex = 7;
+            this.NameTextBox.Location = new System.Drawing.Point(73, 33);
+            this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.Size = new System.Drawing.Size(445, 23);
+            this.NameTextBox.TabIndex = 7;
             // 
             // surnameTextBox
             // 
-            this.surnameTextBox.Anchor =
+            this.SurnameTextBox.Anchor =
                 ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left |
                                                        System.Windows.Forms.AnchorStyles.Right)));
-            this.surnameTextBox.Location = new System.Drawing.Point(73, 3);
-            this.surnameTextBox.Name = "surnameTextBox";
-            this.surnameTextBox.Size = new System.Drawing.Size(445, 23);
-            this.surnameTextBox.TabIndex = 6;
+            this.SurnameTextBox.Location = new System.Drawing.Point(73, 3);
+            this.SurnameTextBox.Name = "SurnameTextBox";
+            this.SurnameTextBox.Size = new System.Drawing.Size(445, 23);
+            this.SurnameTextBox.TabIndex = 6;
             // 
             // surnameLabel
             // 
-            this.surnameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.surnameLabel.Location = new System.Drawing.Point(3, 6);
-            this.surnameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.surnameLabel.Name = "surnameLabel";
-            this.surnameLabel.Size = new System.Drawing.Size(65, 18);
-            this.surnameLabel.TabIndex = 5;
-            this.surnameLabel.Text = "Surname:";
-            this.surnameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SurnameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.SurnameLabel.Location = new System.Drawing.Point(3, 6);
+            this.SurnameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.SurnameLabel.Name = "SurnameLabel";
+            this.SurnameLabel.Size = new System.Drawing.Size(65, 18);
+            this.SurnameLabel.TabIndex = 5;
+            this.SurnameLabel.Text = "Surname:";
+            this.SurnameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // EditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(545, 250);
-            this.Controls.Add(this.tableLayoutPanel);
-            this.Controls.Add(this.okButton);
-            this.Controls.Add(this.closeButton);
+            this.Controls.Add(this.TableLayoutPanel);
+            this.Controls.Add(this.OkButton);
+            this.Controls.Add(this.CloseButton);
             this.MinimumSize = new System.Drawing.Size(512, 288);
             this.Name = "EditForm";
             this.Text = "Add/Edit Contact";
-            this.tableLayoutPanel.ResumeLayout(false);
-            this.tableLayoutPanel.PerformLayout();
+            this.TableLayoutPanel.ResumeLayout(false);
+            this.TableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
         }
 
         #endregion
 
-        private System.Windows.Forms.Button okButton;
-        private System.Windows.Forms.Button closeButton;
-        private System.Windows.Forms.Label surnameLabel;
-        private System.Windows.Forms.TextBox surnameTextBox;
-        private System.Windows.Forms.TextBox nameTextBox;
-        private System.Windows.Forms.Label phoneLabel;
-        private System.Windows.Forms.DateTimePicker birthdayDateTimePicker;
-        private System.Windows.Forms.Label emailLabel;
-        private System.Windows.Forms.Label birthdayLabel;
-        private System.Windows.Forms.TextBox emailTextBox;
-        private System.Windows.Forms.Label vkLabel;
-        private System.Windows.Forms.TextBox vkTextBox;
-        private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.MaskedTextBox phoneMaskedTextBox;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
+        private System.Windows.Forms.Button OkButton;
+        private System.Windows.Forms.Button CloseButton;
+        private System.Windows.Forms.Label SurnameLabel;
+        private System.Windows.Forms.TextBox SurnameTextBox;
+        private System.Windows.Forms.TextBox NameTextBox;
+        private System.Windows.Forms.Label PhoneLabel;
+        private System.Windows.Forms.DateTimePicker BirthdayDateTimePicker;
+        private System.Windows.Forms.Label EmailLabel;
+        private System.Windows.Forms.Label BirthdayLabel;
+        private System.Windows.Forms.TextBox EmailTextBox;
+        private System.Windows.Forms.Label VkLabel;
+        private System.Windows.Forms.TextBox VkTextBox;
+        private System.Windows.Forms.Label NameLabel;
+        private System.Windows.Forms.MaskedTextBox PhoneMaskedTextBox;
+        private System.Windows.Forms.TableLayoutPanel TableLayoutPanel;
     }
 }

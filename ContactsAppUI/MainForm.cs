@@ -23,19 +23,19 @@ namespace ContactsAppUI
 
         private void UpdateData()
         {
-            surnameTextBox.Text = SelectedContact.LastName;
-            nameTextBox.Text = SelectedContact.FirstName;
-            birthdayDateTimePicker.Value = SelectedContact.BirthDate;
-            emailTextBox.Text = SelectedContact.Email;
-            phoneMaskedTextBox.Text = SelectedContact.PhoneNumber.Number.ToString("+0 (000) 000-00-00");
-            vkTextBox.Text = SelectedContact.VkId;
+            SurnameTextBox.Text = SelectedContact.LastName;
+            NameTextBox.Text = SelectedContact.FirstName;
+            BirthdayDateTimePicker.Value = SelectedContact.BirthDate;
+            EmailTextBox.Text = SelectedContact.Email;
+            PhoneMaskedTextBox.Text = SelectedContact.PhoneNumber.Number.ToString("+0 (000) 000-00-00");
+            VkTextBox.Text = SelectedContact.VkId;
         }
 
         public MainForm()
         {
             InitializeComponent();
-            contactsListBox.DataSource = _contacts;
-            contactsListBox.DisplayMember = nameof(Contact.LastName);
+            ContactsListBox.DataSource = _contacts;
+            ContactsListBox.DisplayMember = nameof(Contact.LastName);
             
         }
         
@@ -65,7 +65,7 @@ namespace ContactsAppUI
             };
             
             _contacts.Add(newContact);
-            contactsListBox.Invalidate();
+            ContactsListBox.Invalidate();
         }
 
         private void contactsListBox_SelectedIndexChanged(object sender, EventArgs e)
