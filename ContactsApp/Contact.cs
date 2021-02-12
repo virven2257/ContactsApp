@@ -58,7 +58,7 @@ namespace ContactsApp
             get => _lastName;
             set
             {
-                if (!IsCorrect(_lastName, MaxLength))
+                if (!IsCorrect(value, MaxLength))
                     throw new ArgumentException("Некорректный формат фамилии! Его длина не должна превышать " + 
                                                 MaxLength + " символов."); 
                 _lastName = value;
@@ -74,7 +74,7 @@ namespace ContactsApp
             get => _firstName;
             set
             {
-                if (!IsCorrect(_lastName, MaxLength))
+                if (!IsCorrect(value, MaxLength))
                     throw new ArgumentException("Некорректный формат имени! Его длина не должна превышать " +
                                                 MaxLength + " символов.");
                 _firstName = value;
@@ -99,7 +99,7 @@ namespace ContactsApp
             get => _birthDate;
             set
             {
-                if ((value < MinDate) && (value > DateTime.Today))
+                if ((value < MinDate) || (value > DateTime.Today))
                     throw new ArgumentException("Некорректная дата рождения! Она не может быть раньше, чем "
                                                 + MinDate.ToString("d") + ", или позже, чем сегодняшний день.");
                 _birthDate = value;
@@ -115,7 +115,7 @@ namespace ContactsApp
             get => _email;
             set
             {
-                if (!IsCorrect(_lastName, MaxLength))
+                if (!IsCorrect(value, MaxLength))
                     throw new ArgumentException("Некорректный формат почты! Его длина не должна превышать " +
                                                 MaxLength + " символов.");
                 _email = value;
@@ -131,7 +131,7 @@ namespace ContactsApp
             get => _vkId;
             set
             {
-                if (!IsCorrect(_lastName, MaxLength))
+                if (!IsCorrect(value, MaxLength))
                     throw new ArgumentException("Некорректный формат ID! Его длина не должна превышать " +
                                                 MaxLength + " символов.");
                 _vkId = value;

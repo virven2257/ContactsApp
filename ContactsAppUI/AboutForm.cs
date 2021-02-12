@@ -8,6 +8,7 @@ namespace ContactsAppUI
         public AboutForm()
         {
             InitializeComponent();
+            VersionLabel.Text = "v. " + Application.ProductVersion;
         }
     }
 }

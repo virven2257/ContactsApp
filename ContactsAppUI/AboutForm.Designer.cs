@@ -32,77 +32,77 @@ namespace ContactsAppUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.contactsAppLabel = new System.Windows.Forms.Label();
-            this.versionLabel = new System.Windows.Forms.Label();
-            this.rightsLabel = new System.Windows.Forms.Label();
-            this.authorLabel = new System.Windows.Forms.Label();
-            this.emailTextLabel = new System.Windows.Forms.Label();
-            this.githubTextLabel = new System.Windows.Forms.Label();
-            this.emailLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.СontactsAppLabel = new System.Windows.Forms.Label();
+            this.VersionLabel = new System.Windows.Forms.Label();
+            this.RightsLabel = new System.Windows.Forms.Label();
+            this.AuthorLabel = new System.Windows.Forms.Label();
+            this.EmailTextLabel = new System.Windows.Forms.Label();
+            this.GithubTextLabel = new System.Windows.Forms.Label();
+            this.EmailLinkLabel = new System.Windows.Forms.LinkLabel();
             this.githubLinkLabel = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
-            // contactsAppLabel
+            // СontactsAppLabel
             // 
-            this.contactsAppLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold,
+            this.СontactsAppLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold,
                 System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.contactsAppLabel.Location = new System.Drawing.Point(12, 9);
-            this.contactsAppLabel.Name = "contactsAppLabel";
-            this.contactsAppLabel.Size = new System.Drawing.Size(206, 45);
-            this.contactsAppLabel.TabIndex = 0;
-            this.contactsAppLabel.Text = "ContactsApp";
-            this.contactsAppLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.СontactsAppLabel.Location = new System.Drawing.Point(12, 9);
+            this.СontactsAppLabel.Name = "СontactsAppLabel";
+            this.СontactsAppLabel.Size = new System.Drawing.Size(206, 45);
+            this.СontactsAppLabel.TabIndex = 0;
+            this.СontactsAppLabel.Text = "ContactsApp";
+            this.СontactsAppLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // versionLabel
+            // VersionLabel
             // 
-            this.versionLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular,
+            this.VersionLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular,
                 System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.versionLabel.Location = new System.Drawing.Point(21, 54);
-            this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(112, 22);
-            this.versionLabel.TabIndex = 1;
-            this.versionLabel.Text = "v. " + Application.ProductVersion;
+            this.VersionLabel.Location = new System.Drawing.Point(21, 54);
+            this.VersionLabel.Name = "VersionLabel";
+            this.VersionLabel.Size = new System.Drawing.Size(112, 22);
+            this.VersionLabel.TabIndex = 1;
+            this.VersionLabel.Text = "v. 2019.3.4.0";
             // 
-            // rightsLabel
+            // RightsLabel
             // 
-            this.rightsLabel.Location = new System.Drawing.Point(12, 207);
-            this.rightsLabel.Name = "rightsLabel";
-            this.rightsLabel.Size = new System.Drawing.Size(153, 26);
-            this.rightsLabel.TabIndex = 2;
-            this.rightsLabel.Text = "2021 Sabanova Kristina Ц";
+            this.RightsLabel.Location = new System.Drawing.Point(12, 207);
+            this.RightsLabel.Name = "RightsLabel";
+            this.RightsLabel.Size = new System.Drawing.Size(153, 27);
+            this.RightsLabel.TabIndex = 2;
+            this.RightsLabel.Text = "2021 Sabanova Kristina Ц";
             // 
-            // authorLabel
+            // AuthorLabel
             // 
-            this.authorLabel.Location = new System.Drawing.Point(12, 97);
-            this.authorLabel.Name = "authorLabel";
-            this.authorLabel.Size = new System.Drawing.Size(221, 25);
-            this.authorLabel.TabIndex = 3;
-            this.authorLabel.Text = "Author: Sabanova Kristina";
+            this.AuthorLabel.Location = new System.Drawing.Point(12, 97);
+            this.AuthorLabel.Name = "AuthorLabel";
+            this.AuthorLabel.Size = new System.Drawing.Size(220, 25);
+            this.AuthorLabel.TabIndex = 3;
+            this.AuthorLabel.Text = "Author: Sabanova Kristina";
             // 
-            // emailTextLabel
+            // EmailTextLabel
             // 
-            this.emailTextLabel.Location = new System.Drawing.Point(12, 141);
-            this.emailTextLabel.Name = "emailTextLabel";
-            this.emailTextLabel.Size = new System.Drawing.Size(121, 20);
-            this.emailTextLabel.TabIndex = 4;
-            this.emailTextLabel.Text = "E-mail for feedback:";
+            this.EmailTextLabel.Location = new System.Drawing.Point(12, 141);
+            this.EmailTextLabel.Name = "EmailTextLabel";
+            this.EmailTextLabel.Size = new System.Drawing.Size(121, 20);
+            this.EmailTextLabel.TabIndex = 4;
+            this.EmailTextLabel.Text = "E-mail for feedback:";
             // 
-            // githubTextLabel
+            // GithubTextLabel
             // 
-            this.githubTextLabel.Location = new System.Drawing.Point(12, 162);
-            this.githubTextLabel.Name = "githubTextLabel";
-            this.githubTextLabel.Size = new System.Drawing.Size(51, 20);
-            this.githubTextLabel.TabIndex = 5;
-            this.githubTextLabel.Text = "GitHub:";
+            this.GithubTextLabel.Location = new System.Drawing.Point(12, 162);
+            this.GithubTextLabel.Name = "GithubTextLabel";
+            this.GithubTextLabel.Size = new System.Drawing.Size(51, 20);
+            this.GithubTextLabel.TabIndex = 5;
+            this.GithubTextLabel.Text = "GitHub:";
             // 
-            // emailLinkLabel
+            // EmailLinkLabel
             // 
-            this.emailLinkLabel.Location = new System.Drawing.Point(124, 141);
-            this.emailLinkLabel.Name = "emailLinkLabel";
-            this.emailLinkLabel.Size = new System.Drawing.Size(141, 19);
-            this.emailLinkLabel.TabIndex = 6;
-            this.emailLinkLabel.TabStop = true;
-            this.emailLinkLabel.Text = "linkLabel1";
+            this.EmailLinkLabel.Location = new System.Drawing.Point(124, 141);
+            this.EmailLinkLabel.Name = "EmailLinkLabel";
+            this.EmailLinkLabel.Size = new System.Drawing.Size(141, 18);
+            this.EmailLinkLabel.TabIndex = 6;
+            this.EmailLinkLabel.TabStop = true;
+            this.EmailLinkLabel.Text = "linkLabel1";
             // 
             // githubLinkLabel
             // 
@@ -119,13 +119,13 @@ namespace ContactsAppUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(395, 242);
             this.Controls.Add(this.githubLinkLabel);
-            this.Controls.Add(this.emailLinkLabel);
-            this.Controls.Add(this.githubTextLabel);
-            this.Controls.Add(this.emailTextLabel);
-            this.Controls.Add(this.authorLabel);
-            this.Controls.Add(this.rightsLabel);
-            this.Controls.Add(this.versionLabel);
-            this.Controls.Add(this.contactsAppLabel);
+            this.Controls.Add(this.EmailLinkLabel);
+            this.Controls.Add(this.GithubTextLabel);
+            this.Controls.Add(this.EmailTextLabel);
+            this.Controls.Add(this.AuthorLabel);
+            this.Controls.Add(this.RightsLabel);
+            this.Controls.Add(this.VersionLabel);
+            this.Controls.Add(this.СontactsAppLabel);
             this.MaximumSize = new System.Drawing.Size(411, 280);
             this.MinimumSize = new System.Drawing.Size(411, 280);
             this.Name = "AboutForm";
@@ -136,12 +136,12 @@ namespace ContactsAppUI
         #endregion
 
         private System.Windows.Forms.LinkLabel githubLinkLabel;
-        private System.Windows.Forms.LinkLabel emailLinkLabel;
-        private System.Windows.Forms.Label githubTextLabel;
-        private System.Windows.Forms.Label emailTextLabel;
-        private System.Windows.Forms.Label authorLabel;
-        private System.Windows.Forms.Label rightsLabel;
-        private System.Windows.Forms.Label versionLabel;
-        private System.Windows.Forms.Label contactsAppLabel;
+        private System.Windows.Forms.LinkLabel EmailLinkLabel;
+        private System.Windows.Forms.Label GithubTextLabel;
+        private System.Windows.Forms.Label EmailTextLabel;
+        private System.Windows.Forms.Label AuthorLabel;
+        private System.Windows.Forms.Label RightsLabel;
+        private System.Windows.Forms.Label VersionLabel;
+        private System.Windows.Forms.Label СontactsAppLabel;
     }
 }

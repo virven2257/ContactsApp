@@ -16,9 +16,18 @@ namespace ContactsAppUI
             get => _selectedContact;
             set
             {
-                _selectedContact = value;
+                _selectedContact = value ?? new Contact();
                 UpdateData();
             }
+        }
+
+        public MainForm()
+        {
+            InitializeComponent();
+            ContactsListBox.DataSource = _contacts;
+            ContactsListBox.DisplayMember = nameof(Contact.LastName);
+            CheckItemsCount();
+            _contacts.ListChanged += Contacts_ListChanged;
         }
 
         private void UpdateData()
@@ -30,14 +39,6 @@ namespace ContactsAppUI
             PhoneMaskedTextBox.Text = SelectedContact.PhoneNumber.Number.ToString("+0 (000) 000-00-00");
             VkTextBox.Text = SelectedContact.VkId;
         }
-
-        public MainForm()
-        {
-            InitializeComponent();
-            ContactsListBox.DataSource = _contacts;
-            ContactsListBox.DisplayMember = nameof(Contact.LastName);
-            
-        }
         
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -46,7 +47,8 @@ namespace ContactsAppUI
 
         private void addContactToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new EditForm().Show();
+            EditContact(new Contact(), true);
+            
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -65,14 +67,79 @@ namespace ContactsAppUI
             };
             
             _contacts.Add(newContact);
+            //SelectedContact = newContact;
             ContactsListBox.Invalidate();
         }
 
-        private void contactsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = ((ListBox) sender).SelectedIndex;
+            int index = ContactsListBox.SelectedIndex;
+            if (index == -1) return;
             SelectedContact = _contacts[index];
+        }
 
+        private void RemoveButton_Click(object sender, EventArgs e)
+        {
+            string text = "Do you really want to remove this contact: " + SelectedContact.LastName + "?";
+            DialogResult result = MessageBox.Show(text, "Remove Contact", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                int index = ContactsListBox.SelectedIndex;
+                _contacts.RemoveAt(index);
+                ContactsListBox.Invalidate();
+            }
+
+            //index = ContactsListBox.SelectedIndex;
+            //SelectedContact = index > -1 ? (Contact)ContactsListBox.SelectedItem : null;
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            EditContact(SelectedContact, false);
+        }
+
+        private void EditContact(Contact contact, bool isNew)
+        {
+            var editForm = new EditForm(contact);
+            Enabled = false;
+            DialogResult result = editForm.ShowDialog();
+            Enabled = true;
+            if (result != DialogResult.OK) return;
+            if (isNew)
+            {
+                _contacts.Add(editForm.SelectedContact);
+                //SelectedContact = _contacts[_contacts.IndexOf(editForm.SelectedContact)];
+            }
+            else
+            {
+                int index = _contacts.IndexOf((Contact)ContactsListBox.SelectedItem);
+                _contacts[index] = editForm.SelectedContact;
+                //SelectedContact = _contacts[index];
+            }     
+            ContactsListBox.Invalidate();
+        }
+
+        private void CheckItemsCount()
+        {
+            if (ContactsListBox.Items.Count == 0)
+            {
+                EditButton.Enabled = false;
+                RemoveButton.Enabled = false;
+            }
+            else
+            {
+                EditButton.Enabled = true;
+                RemoveButton.Enabled = true;
+            }
+        }
+        
+        private void Contacts_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            CheckItemsCount();
+            ContactsListBox.DataSource = _contacts;
+            int index = ContactsListBox.SelectedIndex;
+            SelectedContact = index > -1 ? (Contact)ContactsListBox.SelectedItem : null;
+            
         }
     }
 }
