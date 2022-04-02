@@ -31,6 +31,7 @@ namespace ContactsAppUI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.AddButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.RemoveButton = new System.Windows.Forms.Button();
@@ -69,29 +70,36 @@ namespace ContactsAppUI
             // 
             // AddButton
             // 
+            this.AddButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddButton.BackgroundImage")));
+            this.AddButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.AddButton.Location = new System.Drawing.Point(2, 0);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(1);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(23, 23);
+            this.AddButton.Size = new System.Drawing.Size(30, 30);
             this.AddButton.TabIndex = 0;
-            this.AddButton.Text = "a";
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.OnAddButtonClicked);
             // 
             // EditButton
             // 
-            this.EditButton.Location = new System.Drawing.Point(29, 0);
+            this.EditButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditButton.BackgroundImage")));
+            this.EditButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.EditButton.Location = new System.Drawing.Point(38, 0);
+            this.EditButton.Margin = new System.Windows.Forms.Padding(1);
             this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(23, 23);
+            this.EditButton.Size = new System.Drawing.Size(30, 30);
             this.EditButton.TabIndex = 1;
-            this.EditButton.Text = "e";
             this.EditButton.UseVisualStyleBackColor = true;
             this.EditButton.Click += new System.EventHandler(this.OnEditButtonClicked);
             // 
             // RemoveButton
             // 
-            this.RemoveButton.Location = new System.Drawing.Point(56, 0);
+            this.RemoveButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RemoveButton.BackgroundImage")));
+            this.RemoveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.RemoveButton.Location = new System.Drawing.Point(74, 0);
+            this.RemoveButton.Margin = new System.Windows.Forms.Padding(1);
             this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(23, 23);
+            this.RemoveButton.Size = new System.Drawing.Size(30, 30);
             this.RemoveButton.TabIndex = 2;
             this.RemoveButton.Text = "r";
             this.RemoveButton.UseVisualStyleBackColor = true;
@@ -313,7 +321,7 @@ namespace ContactsAppUI
             this.LeftTableLayoutPanel.RowCount = 3;
             this.LeftTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.LeftTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.LeftTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.LeftTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.LeftTableLayoutPanel.Size = new System.Drawing.Size(251, 404);
             this.LeftTableLayoutPanel.TabIndex = 17;
             // 
@@ -323,9 +331,9 @@ namespace ContactsAppUI
             this.BottomLeftPanel.Controls.Add(this.AddButton);
             this.BottomLeftPanel.Controls.Add(this.EditButton);
             this.BottomLeftPanel.Controls.Add(this.RemoveButton);
-            this.BottomLeftPanel.Location = new System.Drawing.Point(3, 377);
+            this.BottomLeftPanel.Location = new System.Drawing.Point(3, 369);
             this.BottomLeftPanel.Name = "BottomLeftPanel";
-            this.BottomLeftPanel.Size = new System.Drawing.Size(245, 24);
+            this.BottomLeftPanel.Size = new System.Drawing.Size(245, 32);
             this.BottomLeftPanel.TabIndex = 6;
             // 
             // SurnameLabel
