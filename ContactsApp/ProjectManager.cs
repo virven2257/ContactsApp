@@ -30,15 +30,13 @@ namespace ContactsApp
         /// <exception cref="JsonReaderException">Файл повреждён</exception>
         /// <exception cref="IOException">Ошибка ввода-вывода</exception>
         /// <exception cref="Exception">Неизвестная ошибка</exception>
-        public Project LoadAsync()
+        public Project LoadProject()
         {
-            if (!File.Exists(ContactsData))
-            {
-                CreateAsync();
-            }
-
             try
             {
+                if (!File.Exists(ContactsData))
+                    CreateProject();
+                
                 var data = File.ReadAllText(ContactsData, Encoding.UTF8);
                 var project = JsonConvert.DeserializeObject<Project>(data);
                 return project;
@@ -68,7 +66,7 @@ namespace ContactsApp
         /// <exception cref="UnauthorizedAccessException">Ошибка доступа</exception>
         /// <exception cref="IOException">Ошибка ввода-вывода</exception>
         /// <exception cref="Exception">Неизвестная ошибка</exception>
-        public void SaveAsync(Project project)
+        public void SaveProject(Project project)
         {
             try
             {
@@ -92,9 +90,9 @@ namespace ContactsApp
         /// <summary>
         /// Создаёт новый файл проекта
         /// </summary>
-        public void CreateAsync()
+        public void CreateProject()
         {
-            SaveAsync(new Project());
+            SaveProject(new Project());
         }
 
         private ProjectManager()

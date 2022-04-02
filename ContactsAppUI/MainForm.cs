@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 using ContactsApp;
 
@@ -7,16 +9,28 @@ namespace ContactsAppUI
 {
     public partial class MainForm : Form
     {
-        private BindingList<Contact> _contacts = new BindingList<Contact>();
+        /// <summary>
+        /// Список всех контактов, привязанный к интерфейсу
+        /// </summary>
+        private BindingList<Contact> _contacts;
+
+        /// <summary>
+        /// Файл проекта с контактами
+        /// </summary>
+        private readonly Project _project = ProjectManager.Current.LoadProject();
 
         private Contact _selectedContact = new Contact();
 
+        
+        /// <summary>
+        /// Выбранный контакт
+        /// </summary>
         private Contact SelectedContact
         {
             get => _selectedContact;
             set
             {
-                _selectedContact = value ?? new Contact();
+                _selectedContact = value;
                 UpdateData();
             }
         }
@@ -24,101 +38,126 @@ namespace ContactsAppUI
         public MainForm()
         {
             InitializeComponent();
+            UpdateContactsList();
+            CheckItemsCount();
+        }
+
+        /// <summary>
+        /// Обновление списка контактов
+        /// </summary>
+        private void UpdateContactsList()
+        {
+            // if (_contacts != null)
+            //     _contacts.ListChanged -= OnContactsListChanged;
+            _contacts = new BindingList<Contact>(_project.Contacts
+                .Where(i => i.LastName
+                    .StartsWith(FindTextBox.Text ?? ""))
+                .ToList());
+            SelectedContact = _contacts.FirstOrDefault();
+            // _contacts.ListChanged += OnContactsListChanged;
             ContactsListBox.DataSource = _contacts;
             ContactsListBox.DisplayMember = nameof(Contact.LastName);
-            CheckItemsCount();
-            _contacts.ListChanged += Contacts_ListChanged;
+            ContactsListBox.Invalidate();
+            UpdateData();
+            UpdateState();
         }
 
+        /// <summary>
+        /// Обновление полей
+        /// </summary>
         private void UpdateData()
         {
-            SurnameTextBox.Text = SelectedContact.LastName;
-            NameTextBox.Text = SelectedContact.FirstName;
-            BirthdayDateTimePicker.Value = SelectedContact.BirthDate;
-            EmailTextBox.Text = SelectedContact.Email;
-            PhoneMaskedTextBox.Text = SelectedContact.PhoneNumber.Number.ToString("+0 (000) 000-00-00");
-            VkTextBox.Text = SelectedContact.VkId;
+            SurnameTextBox.Text = SelectedContact?.LastName ?? "";
+            NameTextBox.Text = SelectedContact?.FirstName ?? "";
+            BirthdayDateTimePicker.Value = SelectedContact?.BirthDate ?? DateTime.Today;
+            EmailTextBox.Text = SelectedContact?.Email?? "";
+            PhoneMaskedTextBox.Text = SelectedContact?.PhoneNumber.Number.ToString("+0 (000) 000-00-00") ??
+                                      "";
+            VkTextBox.Text = SelectedContact?.VkId ?? "";
+        }
+
+        /// <summary>
+        /// Обновление выбранного контакта и активности кнопок
+        /// </summary>
+        private void UpdateState()
+        {
+            var index = ContactsListBox.SelectedIndex;
+            RemoveButton.Enabled = index > -1 && _contacts.Any();
+            EditButton.Enabled = index > -1 && _contacts.Any();
+            RemoveContactToolStripMenuItem.Enabled = index > -1 && _contacts.Any();
+            EditContactToolStripMenuItem.Enabled = index > -1 && _contacts.Any();
+        }
+
+        /// <summary>
+        /// Предупреждение при удалении
+        /// </summary>
+        /// <returns></returns>
+        private bool UserWantsToDelete()
+        {
+            if (SelectedContact == null)
+                return false;
+            var text = "Do you really want to remove this contact: " + SelectedContact.LastName + "?";
+            var result = MessageBox.Show(text, @"Remove Contact", MessageBoxButtons.OKCancel);
+            return result == DialogResult.OK;
+        }
+
+        /// <summary>
+        /// Удаление выбранного контакта
+        /// </summary>
+        private void RemoveContact()
+        {
+            var index = ContactsListBox.SelectedIndex;
+            var item = _contacts[index];
+            _project.Contacts.Remove(item);
+            UpdateContactsList();
+            SelectedContact = index > -1 ? (Contact)ContactsListBox.SelectedItem : null;
+            UpdateState();
+            SaveProject(_project);
         }
         
-        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Редактирование или создание нового контакта
+        /// </summary>
+        /// <param name="contact">Контакт. Null -- создание нового контакта.</param>
+        private void EditContact(Contact contact = null)
         {
-           new AboutForm().Show();
-        }
-
-        private void addContactToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            EditContact(new Contact(), true);
-            
-        }
-
-        private void addButton_Click(object sender, EventArgs e)
-        {
-            Contact newContact = new Contact()
-            {
-                Email = "f@k.u",
-                BirthDate = DateTime.Today - TimeSpan.FromDays(2),
-                FirstName = "Иван",
-                LastName = "Иванов",
-                PhoneNumber = new PhoneNumber()
-                {
-                    Number = 71111111111
-                },
-                VkId = "aaa"
-            };
-            
-            _contacts.Add(newContact);
-            //SelectedContact = newContact;
-            ContactsListBox.Invalidate();
-        }
-
-        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int index = ContactsListBox.SelectedIndex;
-            if (index == -1) return;
-            SelectedContact = _contacts[index];
-        }
-
-        private void RemoveButton_Click(object sender, EventArgs e)
-        {
-            string text = "Do you really want to remove this contact: " + SelectedContact.LastName + "?";
-            DialogResult result = MessageBox.Show(text, "Remove Contact", MessageBoxButtons.OKCancel);
-            if (result == DialogResult.OK)
-            {
-                int index = ContactsListBox.SelectedIndex;
-                _contacts.RemoveAt(index);
-                ContactsListBox.Invalidate();
-            }
-
-            //index = ContactsListBox.SelectedIndex;
-            //SelectedContact = index > -1 ? (Contact)ContactsListBox.SelectedItem : null;
-        }
-
-        private void EditButton_Click(object sender, EventArgs e)
-        {
-            EditContact(SelectedContact, false);
-        }
-
-        private void EditContact(Contact contact, bool isNew)
-        {
-            var editForm = new EditForm(contact);
+            var index = ContactsListBox.SelectedIndex;
+            var editForm = new EditForm(contact ?? new Contact());
             Enabled = false;
-            DialogResult result = editForm.ShowDialog();
+            var result = editForm.ShowDialog();
             Enabled = true;
             if (result != DialogResult.OK) return;
-            if (isNew)
+            if (contact == null)
             {
-                _contacts.Add(editForm.SelectedContact);
-                //SelectedContact = _contacts[_contacts.IndexOf(editForm.SelectedContact)];
+                _project.Contacts.Add(editForm.SelectedContact);
+                UpdateContactsList();
+                var newContactIndex = _contacts.IndexOf(editForm.SelectedContact);
+                if (newContactIndex >= 0)
+                {
+                    ContactsListBox.SelectedIndex = newContactIndex;
+                    SelectedContact = _contacts[newContactIndex];
+                }
+                else
+                {
+                    ContactsListBox.SelectedIndex = -1;
+                    SelectedContact = null;
+                }
+
+                UpdateState();
+                SaveProject(_project);
             }
             else
             {
-                int index = _contacts.IndexOf((Contact)ContactsListBox.SelectedItem);
-                _contacts[index] = editForm.SelectedContact;
-                //SelectedContact = _contacts[index];
-            }     
-            ContactsListBox.Invalidate();
+                UpdateContactsList();
+                UpdateState();
+                ContactsListBox.SelectedIndex = index;
+                SaveProject(_project);
+            }
         }
 
+        /// <summary>
+        /// Отключение кнопок, если список пуст
+        /// </summary>
         private void CheckItemsCount()
         {
             if (ContactsListBox.Items.Count == 0)
@@ -133,13 +172,116 @@ namespace ContactsAppUI
             }
         }
         
-        private void Contacts_ListChanged(object sender, ListChangedEventArgs e)
+        /// <summary>
+        /// Открытие формы
+        /// </summary>
+        private void OnAboutItemClicked(object sender, EventArgs e)
         {
-            CheckItemsCount();
-            ContactsListBox.DataSource = _contacts;
+           new AboutForm().Show();
+        }
+
+        /// <summary>
+        /// Добавить контакт
+        /// </summary>
+        private void OnAddContactItemClicked(object sender, EventArgs e)
+        {
+            EditContact();
+        }
+
+        /// <summary>
+        /// Добавить контакт
+        /// </summary>
+        private void OnAddButtonClicked(object sender, EventArgs e)
+        {
+            EditContact();
+        }
+
+        /// <summary>
+        /// Меняет выбранный контакт, если он выбран на интерфейсе
+        /// </summary>
+        private void OnSelectedIndexChanged(object sender, EventArgs e)
+        {
             int index = ContactsListBox.SelectedIndex;
             SelectedContact = index > -1 ? (Contact)ContactsListBox.SelectedItem : null;
-            
+            UpdateState();
+        }
+
+        /// <summary>
+        /// Удаление контакта
+        /// </summary>
+        private void OnRemoveButtonClicked(object sender, EventArgs e)
+        {
+            if (ContactsListBox.SelectedIndex < 0)
+                return;
+            if (UserWantsToDelete())
+                RemoveContact();
+        }
+
+        /// <summary>
+        /// Редактирование контакта
+        /// </summary>
+        private void OnEditButtonClicked(object sender, EventArgs e)
+        {
+            if (ContactsListBox.SelectedIndex < 0)
+                return;
+            EditContact(SelectedContact);
+        }
+
+        // private void OnContactsListChanged(object sender, ListChangedEventArgs e)
+        // {
+        //     CheckItemsCount();     
+        //     ProjectManager.Current.SaveProject(_project);
+        //     var index = ContactsListBox.SelectedIndex;
+        //     SelectedContact = index > -1 ? (Contact)ContactsListBox.SelectedItem : null;
+        //     ContactsListBox.DataSource = _contacts;
+        //     ContactsListBox.Invalidate();
+        // }
+
+        /// <summary>
+        /// Редактирование контакта
+        /// </summary>
+        private void OnEditItemClicked(object sender, EventArgs e)
+        {
+            if (ContactsListBox.SelectedIndex < 0)
+                return;
+            EditContact(SelectedContact);
+        }
+
+        /// <summary>
+        /// Выход из программы
+        /// </summary>
+        private void OnExitItemClicked(object sender, EventArgs e)
+        {
+            SaveProject(_project);
+            Close();
+        }
+
+        /// <summary>
+        /// Удаление программы
+        /// </summary>
+        private void OnRemoveContactItemClicked(object sender, EventArgs e)
+        {
+            if (ContactsListBox.SelectedIndex < 0)
+                return;
+            if (UserWantsToDelete())
+                RemoveContact();
+        }
+
+        /// <summary>
+        /// Закрытие формы
+        /// </summary>
+        private void OnFormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveProject(_project);
+        }
+
+        /// <summary>
+        /// Сохранение проекта
+        /// </summary>
+        /// <param name="project">Проект</param>
+        private void SaveProject(Project project)
+        {
+            ProjectManager.Current.SaveProject(project);
         }
     }
 }

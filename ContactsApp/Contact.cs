@@ -58,7 +58,7 @@ namespace ContactsApp
             get => _lastName;
             set
             {
-                if (!IsCorrect(value, MaxLength))
+                if (!TextIsCorrect(value, MaxLength))
                     throw new ArgumentException("Некорректный формат фамилии! Его длина не должна превышать " + 
                                                 MaxLength + " символов."); 
                 _lastName = value;
@@ -74,7 +74,7 @@ namespace ContactsApp
             get => _firstName;
             set
             {
-                if (!IsCorrect(value, MaxLength))
+                if (!TextIsCorrect(value, MaxLength))
                     throw new ArgumentException("Некорректный формат имени! Его длина не должна превышать " +
                                                 MaxLength + " символов.");
                 _firstName = value;
@@ -99,7 +99,7 @@ namespace ContactsApp
             get => _birthDate;
             set
             {
-                if ((value < MinDate) || (value > DateTime.Today))
+                if (!DateIsCorrect(value))
                     throw new ArgumentException("Некорректная дата рождения! Она не может быть раньше, чем "
                                                 + MinDate.ToString("d") + ", или позже, чем сегодняшний день.");
                 _birthDate = value;
@@ -115,7 +115,7 @@ namespace ContactsApp
             get => _email;
             set
             {
-                if (!IsCorrect(value, MaxLength))
+                if (!TextIsCorrect(value, MaxLength, true))
                     throw new ArgumentException("Некорректный формат почты! Его длина не должна превышать " +
                                                 MaxLength + " символов.");
                 _email = value;
@@ -131,7 +131,7 @@ namespace ContactsApp
             get => _vkId;
             set
             {
-                if (!IsCorrect(value, MaxLength))
+                if (!TextIsCorrect(value, MaxLength, true))
                     throw new ArgumentException("Некорректный формат ID! Его длина не должна превышать " +
                                                 MaxLength + " символов.");
                 _vkId = value;
@@ -143,12 +143,46 @@ namespace ContactsApp
         /// </summary>
         /// <param name="text">Проверяемый текст</param>
         /// <param name="length">Максимальная длина текста</param>
+        /// <param name="canBeEmpty">Показывает, может ли текстовое поле быть пустым (но не null).</param>
         /// <returns>true, если строка подходит, false, если нет</returns>
-        private static bool IsCorrect(string text, int length)
+        private static bool TextIsCorrect(string text, int length, bool canBeEmpty = false)
         {
-            return (text != null) && (text.Length <= length);
+            if (text == null)
+                return false;
+            var valid = true;
+            if (text == "")
+                valid = canBeEmpty;
+            if (text.Length > length)
+                valid = false;
+            return valid;
         }
 
+        /// <summary>
+        /// Проверка, что дата корректна
+        /// </summary>
+        /// <param name="value">Значение</param>
+        /// <returns></returns>
+        private static bool DateIsCorrect(DateTime value)
+        {
+            return value >= MinDate && (value <= DateTime.Today);
+        }
+
+        /// <summary>
+        /// Проверка правильности всех свойств контакта
+        /// </summary>
+        /// <returns>Корректен ли</returns>
+        public bool Correct() =>
+            TextIsCorrect(_firstName, MaxLength) &&
+            TextIsCorrect(_lastName, MaxLength) &&
+            TextIsCorrect(_email, MaxLength) &&
+            TextIsCorrect(_vkId, MaxLength) &&
+            DateIsCorrect(_birthDate) &&
+            _phoneNumber.IsCorrect(_phoneNumber.Number);
+
+       /// <summary>
+       /// Копирование контакта
+       /// </summary>
+       /// <returns>Копия</returns>
         public object Clone()
         {
             return new Contact()

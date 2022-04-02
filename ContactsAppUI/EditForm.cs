@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using ContactsApp;
 
@@ -6,13 +7,14 @@ namespace ContactsAppUI
 {
     public partial class EditForm : Form
     {
-        public Contact SelectedContact { get; set; } = new Contact();
+        public Contact SelectedContact { get; }
 
         public EditForm(Contact contact)
         {
             InitializeComponent();
             SelectedContact = contact;
             UpdateData();
+            CheckFields();
         }
 
         private void UpdateData()
@@ -25,118 +27,115 @@ namespace ContactsAppUI
             VkTextBox.Text = SelectedContact.VkId;
         }
         
-        private void CloseButton_Click(object sender, EventArgs e)
+        private void OnCloseButtonClicked(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
-            this.Close();
+            Close();
         }
 
-        private void OkButton_Click(object sender, EventArgs e)
+        private void OnOkButtonClicked(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
-            this.Close();
+            Close();
         }
 
-        private void SurnameTextBox_TextChanged(object sender, EventArgs e)
-        {
-            CheckFields();
-            // try
-            // {
-            //     SelectedContact.LastName = SurnameTextBox.Text;
-            //     OkButton.Enabled = true;
-            // }
-            // catch (Exception exception)
-            // {
-            //     OkButton.Enabled = false;
-            // }
-        }
-
-        private void NameTextBox_TextChanged(object sender, EventArgs e)
-        {
-            CheckFields();
-            // try
-            // {
-            //     SelectedContact.FirstName = NameTextBox.Text;
-            //     OkButton.Enabled = true;
-            // }
-            // catch
-            // {
-            //     OkButton.Enabled = false;
-            // }
-        }
-
-        private void BirthdayDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            CheckFields();
-            // try
-            // {
-            //     SelectedContact.BirthDate = BirthdayDateTimePicker.Value;
-            //     OkButton.Enabled = false;
-            // }
-            // catch
-            // {
-            //     OkButton.Enabled = false;
-            // }
-        }
-
-        private void PhoneMaskedTextBox_TextChanged(object sender, EventArgs e)
-        {
-            CheckFields();
-            // try
-            // {
-            //     SelectedContact.PhoneNumber.Number = PhoneConverter.Unmask(PhoneMaskedTextBox.Text);
-            // }
-            // catch
-            // {
-            //     OkButton.Enabled = false;
-            // }
-        }
-
-        private void EmailTextBox_TextChanged(object sender, EventArgs e)
-        {
-            CheckFields();
-            // try
-            // {
-            //     SelectedContact.Email = EmailTextBox.Text;
-            //     OkButton.Enabled = true;
-            // }
-            // catch
-            // {
-            //     OkButton.Enabled = false;
-            // }
-        }
-
-        private void VkTextBox_TextChanged(object sender, EventArgs e)
-        {
-            CheckFields();
-            // try
-            // {
-            //     SelectedContact.VkId = VkTextBox.Text;
-            //     OkButton.Enabled = true;
-            // }
-            // catch
-            // {
-            //     OkButton.Enabled = false;
-            // }
-        }
-
-        private void CheckFields()
+        private void OnSurnameTextChanged(object sender, EventArgs e)
         {
             try
             {
                 SelectedContact.LastName = SurnameTextBox.Text;
-                SelectedContact.FirstName = NameTextBox.Text;
-                SelectedContact.BirthDate = BirthdayDateTimePicker.Value;
-                SelectedContact.PhoneNumber.Number = PhoneConverter.Unmask(PhoneMaskedTextBox.Text);
-                SelectedContact.Email = EmailTextBox.Text;
-                SelectedContact.VkId = VkTextBox.Text;
-                OkButton.Enabled = true;
+                RemoveError((Control)sender);
             }
-            catch (Exception e)
+            catch (Exception exception)
             {
-                OkButton.Enabled = false;
+                SetError((Control)sender, exception.Message);
             }
-            
+        }
+
+        private void OnNameTextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SelectedContact.FirstName = NameTextBox.Text;
+                RemoveError((Control)sender);
+            }
+            catch (Exception exception)
+            {
+                SetError((Control)sender, exception.Message);
+            }
+        }
+
+        private void OnBirthdayDateChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SelectedContact.BirthDate = BirthdayDateTimePicker.Value;
+                RemoveError((Control)sender);
+            }
+            catch (Exception exception)
+            {
+                SetError((Control)sender, exception.Message);
+            }
+        }
+
+        private void OnPhoneTextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SelectedContact.PhoneNumber.Number = PhoneConverter.Unmask(PhoneMaskedTextBox.Text);
+                RemoveError((Control)sender);
+            }
+            catch (Exception exception)
+            {
+                SetError((Control)sender, exception.Message);
+            }
+        }
+
+        private void OnEmailTextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SelectedContact.Email = EmailTextBox.Text;
+                RemoveError((Control)sender);
+            }
+            catch (Exception exception)
+            {
+                SetError((Control)sender, exception.Message);
+            }
+        }
+
+        private void OnVkTextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                SelectedContact.VkId = NameTextBox.Text;
+                RemoveError((Control)sender);
+            }
+            catch (Exception exception)
+            {
+                SetError((Control)sender, exception.Message);
+            }
+        }
+
+        private void CheckFields()
+        {
+            OkButton.Enabled = SelectedContact.Correct();
+        }
+
+        private void SetError(Control control, string message)
+        {
+            OkButton.Enabled = true;
+            errorProvider.SetError(control, message);
+            control.ForeColor = Color.Red;
+            OkButton.Enabled = false;
+        }
+
+        private void RemoveError(Control control)
+        {
+            OkButton.Enabled = false;
+            errorProvider.SetError(control, "");
+            control.ResetForeColor();
+            CheckFields();
         }
     }
 }
