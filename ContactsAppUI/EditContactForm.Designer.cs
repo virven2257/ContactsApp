@@ -235,7 +235,8 @@ namespace ContactsAppUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 217);
+            this.ClientSize = new System.Drawing.Size(467, 239);
+            this.ControlBox = false;
             this.Controls.Add(this.TableLayoutPanel);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.CloseButton);

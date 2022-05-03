@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 using ContactsApp;
 
@@ -21,7 +20,7 @@ namespace ContactsAppUI
         {
             SurnameTextBox.Text = SelectedContact.LastName;
             NameTextBox.Text = SelectedContact.FirstName;
-            BirthdayDateTimePicker.Value = SelectedContact.BirthDate;
+            BirthdayDateTimePicker.Value = SelectedContact.DateOfBirth;
             EmailTextBox.Text = SelectedContact.Email;
             PhoneMaskedTextBox.Text = SelectedContact.PhoneNumber.Number.ToString("+0 (000) 000-00-00");
             VkTextBox.Text = SelectedContact.VkId;
@@ -69,7 +68,7 @@ namespace ContactsAppUI
         {
             try
             {
-                SelectedContact.BirthDate = BirthdayDateTimePicker.Value;
+                SelectedContact.DateOfBirth = BirthdayDateTimePicker.Value;
                 RemoveError((Control)sender);
             }
             catch (Exception exception)
@@ -126,7 +125,6 @@ namespace ContactsAppUI
         {
             OkButton.Enabled = true;
             errorProvider.SetError(control, message);
-            control.ForeColor = Color.Red;
             OkButton.Enabled = false;
         }
 

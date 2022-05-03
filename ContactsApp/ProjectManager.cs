@@ -11,16 +11,19 @@ namespace ContactsApp
         /// Имя файла с контактами
         /// </summary>
         public static readonly string FileName = "ContactsApp.notes";
+
+        public static readonly string FolderName = "ContactsApp";
         
         /// <summary>
         /// Директория, в которой хранятся контакты
         /// </summary>
-        public static readonly string Path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        public static readonly string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) 
+                                             + @"\" + FolderName;
 
         /// <summary>
         /// Полный путь к файлу с контактами
         /// </summary>
-        public static readonly string ContactsData = Path + @"\" + FileName;
+        public static readonly string ProjectFullPath = Path + @"\" + FileName;
 
         /// <summary>
         /// Загружает проект из файла
@@ -34,28 +37,16 @@ namespace ContactsApp
         {
             try
             {
-                if (!File.Exists(ContactsData))
+                if (!File.Exists(ProjectFullPath))
                     CreateProject();
                 
-                var data = File.ReadAllText(ContactsData, Encoding.UTF8);
+                var data = File.ReadAllText(ProjectFullPath, Encoding.UTF8);
                 var project = JsonConvert.DeserializeObject<Project>(data);
-                return project;
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                throw new UnauthorizedAccessException("Ошибка доступа");
-            }
-            catch (JsonReaderException ex)
-            {
-                throw new JsonReaderException("Файл повреждён");
-            }
-            catch (IOException ex)
-            {
-                throw new IOException("Ошибка ввода-вывода");
+                return project ?? new Project();
             }
             catch (Exception ex)
             {
-                throw new Exception("Неизвестная ошибка");
+                throw new Exception();
             }
         }
 
@@ -70,20 +61,14 @@ namespace ContactsApp
         {
             try
             {
+                var file = new FileInfo(ProjectFullPath);
+                file.Directory?.Create();
                 var data = JsonConvert.SerializeObject(project);
-                File.WriteAllText(ContactsData, data, Encoding.UTF8);
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                throw new UnauthorizedAccessException("Ошибка доступа");
-            }
-            catch (IOException ex)
-            {
-                throw new IOException("Ошибка ввода-вывода");
+                File.WriteAllText(ProjectFullPath, data, Encoding.UTF8);
             }
             catch (Exception ex)
             {
-                throw new Exception("Неизвестная ошибка");
+                throw new Exception();
             }
         }
 

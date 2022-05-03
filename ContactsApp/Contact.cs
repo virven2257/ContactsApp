@@ -22,7 +22,7 @@ namespace ContactsApp
         /// <summary>
         /// Дата рождения контакта
         /// </summary>
-        private DateTime _birthDate = DateTime.Today;
+        private DateTime _dateOfBirth = DateTime.Today;
         
         /// <summary>
         /// Электронная почта контакта
@@ -94,15 +94,15 @@ namespace ContactsApp
         /// Свойство, принимающее и возвращающее дату рождения
         /// </summary>
         /// <exception cref="ArgumentException">Исключение при некорректной указанной дате</exception>
-        public DateTime BirthDate
+        public DateTime DateOfBirth
         {
-            get => _birthDate;
+            get => _dateOfBirth;
             set
             {
                 if (!DateIsCorrect(value))
                     throw new ArgumentException("Некорректная дата рождения! Она не может быть раньше, чем "
                                                 + MinDate.ToString("d") + ", или позже, чем сегодняшний день.");
-                _birthDate = value;
+                _dateOfBirth = value;
             }
         }
         
@@ -176,7 +176,7 @@ namespace ContactsApp
             TextIsCorrect(_lastName, MaxLength) &&
             TextIsCorrect(_email, MaxLength) &&
             TextIsCorrect(_vkId, MaxLength) &&
-            DateIsCorrect(_birthDate) &&
+            DateIsCorrect(_dateOfBirth) &&
             _phoneNumber.IsCorrect(_phoneNumber.Number);
 
        /// <summary>
@@ -190,7 +190,7 @@ namespace ContactsApp
                 LastName = this.LastName,
                 FirstName = this.FirstName,
                 PhoneNumber = this.PhoneNumber,
-                BirthDate = this.BirthDate,
+                DateOfBirth = this.DateOfBirth,
                 Email = this.Email,
                 VkId = this.VkId
             };

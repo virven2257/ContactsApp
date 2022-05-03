@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
@@ -69,7 +68,7 @@ namespace ContactsAppUI
         {
             SurnameTextBox.Text = SelectedContact?.LastName ?? "";
             NameTextBox.Text = SelectedContact?.FirstName ?? "";
-            BirthdayDateTimePicker.Value = SelectedContact?.BirthDate ?? DateTime.Today;
+            BirthdayDateTimePicker.Value = SelectedContact?.DateOfBirth ?? DateTime.Today;
             EmailTextBox.Text = SelectedContact?.Email?? "";
             PhoneMaskedTextBox.Text = SelectedContact?.PhoneNumber.Number.ToString("+0 (000) 000-00-00") ??
                                       "";
@@ -114,45 +113,52 @@ namespace ContactsAppUI
             UpdateState();
             SaveProject(_project);
         }
-        
+
         /// <summary>
-        /// Редактирование или создание нового контакта
+        /// Создание нового контакта
         /// </summary>
-        /// <param name="contact">Контакт. Null -- создание нового контакта.</param>
-        private void EditContact(Contact contact = null)
+        private void CreateContact()
         {
-            var index = ContactsListBox.SelectedIndex;
-            var editForm = new EditForm(contact ?? new Contact());
+            var editForm = new EditForm(new Contact());
             Enabled = false;
             var result = editForm.ShowDialog();
             Enabled = true;
             if (result != DialogResult.OK) return;
-            if (contact == null)
+            _project.Contacts.Add(editForm.SelectedContact);
+            UpdateContactsList();
+            var newContactIndex = _contacts.IndexOf(editForm.SelectedContact);
+            if (newContactIndex >= 0)
             {
-                _project.Contacts.Add(editForm.SelectedContact);
-                UpdateContactsList();
-                var newContactIndex = _contacts.IndexOf(editForm.SelectedContact);
-                if (newContactIndex >= 0)
-                {
-                    ContactsListBox.SelectedIndex = newContactIndex;
-                    SelectedContact = _contacts[newContactIndex];
-                }
-                else
-                {
-                    ContactsListBox.SelectedIndex = -1;
-                    SelectedContact = null;
-                }
-
-                UpdateState();
-                SaveProject(_project);
+                ContactsListBox.SelectedIndex = newContactIndex;
+                SelectedContact = _contacts[newContactIndex];
             }
             else
             {
-                UpdateContactsList();
-                UpdateState();
-                ContactsListBox.SelectedIndex = index;
-                SaveProject(_project);
+                ContactsListBox.SelectedIndex = -1;
+                SelectedContact = null;
             }
+
+            UpdateState();
+            SaveProject(_project);
+        }
+        
+        /// <summary>
+        /// Редактирование контакта
+        /// </summary>
+        /// <param name="contact">Контакт</param>
+        private void EditContact(Contact contact)
+        {
+            if (contact == null) CreateContact();
+            var index = ContactsListBox.SelectedIndex;
+            var editForm = new EditForm(contact);
+            Enabled = false;
+            var result = editForm.ShowDialog();
+            Enabled = true;
+            if (result != DialogResult.OK) return;
+            UpdateContactsList();
+            UpdateState();
+            ContactsListBox.SelectedIndex = index;
+            SaveProject(_project);
         }
 
         /// <summary>
@@ -185,7 +191,7 @@ namespace ContactsAppUI
         /// </summary>
         private void OnAddContactItemClicked(object sender, EventArgs e)
         {
-            EditContact();
+            CreateContact();
         }
 
         /// <summary>
@@ -193,7 +199,7 @@ namespace ContactsAppUI
         /// </summary>
         private void OnAddButtonClicked(object sender, EventArgs e)
         {
-            EditContact();
+            CreateContact();
         }
 
         /// <summary>
@@ -226,16 +232,6 @@ namespace ContactsAppUI
                 return;
             EditContact(SelectedContact);
         }
-
-        // private void OnContactsListChanged(object sender, ListChangedEventArgs e)
-        // {
-        //     CheckItemsCount();     
-        //     ProjectManager.Current.SaveProject(_project);
-        //     var index = ContactsListBox.SelectedIndex;
-        //     SelectedContact = index > -1 ? (Contact)ContactsListBox.SelectedItem : null;
-        //     ContactsListBox.DataSource = _contacts;
-        //     ContactsListBox.Invalidate();
-        // }
 
         /// <summary>
         /// Редактирование контакта
