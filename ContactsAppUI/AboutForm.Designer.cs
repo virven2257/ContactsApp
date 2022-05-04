@@ -101,6 +101,7 @@ namespace ContactsAppUI
             this.EmailLinkLabel.TabIndex = 6;
             this.EmailLinkLabel.TabStop = true;
             this.EmailLinkLabel.Text = "virven2257@gmail.com";
+            this.EmailLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.EmailLinkLabel_LinkClicked);
             // 
             // githubLinkLabel
             // 

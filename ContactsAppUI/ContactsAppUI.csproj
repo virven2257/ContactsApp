@@ -107,6 +107,7 @@
   <ItemGroup>
     <Content Include="Assets\Delete.png" />
     <Content Include="Assets\Edit.png" />
+    <Content Include="Assets\BdayInfo.png" />
     <Content Include="Assets\New.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

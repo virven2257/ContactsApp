@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
@@ -20,6 +21,7 @@ namespace ContactsAppUI
 
         private Contact _selectedContact = new Contact();
 
+
         
         /// <summary>
         /// Выбранный контакт
@@ -39,6 +41,7 @@ namespace ContactsAppUI
             InitializeComponent();
             UpdateContactsList();
             CheckItemsCount();
+            UpdateBirthdays();
         }
 
         /// <summary>
@@ -46,14 +49,8 @@ namespace ContactsAppUI
         /// </summary>
         private void UpdateContactsList()
         {
-            // if (_contacts != null)
-            //     _contacts.ListChanged -= OnContactsListChanged;
-            _contacts = new BindingList<Contact>(_project.Contacts
-                .Where(i => i.LastName
-                    .StartsWith(FindTextBox.Text ?? ""))
-                .ToList());
+            _contacts = new BindingList<Contact>(_project.FindSorted(FindTextBox.Text));
             SelectedContact = _contacts.FirstOrDefault();
-            // _contacts.ListChanged += OnContactsListChanged;
             ContactsListBox.DataSource = _contacts;
             ContactsListBox.DisplayMember = nameof(Contact.LastName);
             ContactsListBox.Invalidate();
@@ -73,6 +70,22 @@ namespace ContactsAppUI
             PhoneMaskedTextBox.Text = SelectedContact?.PhoneNumber.Number.ToString("+0 (000) 000-00-00") ??
                                       "";
             VkTextBox.Text = SelectedContact?.VkId ?? "";
+        }
+
+        private void UpdateBirthdays()
+        {
+            List<string> birthdays = _project
+                .GetBirthdays(DateTime.Today)
+                .Select(i => i.LastName)
+                .ToList();
+
+            if (birthdays.Count > 0)
+            {
+                for (int i = 0; i < birthdays.Count-1; i++)
+                    BdayListLabel.Text += " " + birthdays[i] + ",";
+                BdayListLabel.Text += " " + birthdays[birthdays.Count - 1] + '.';
+                BirthdayPanel.Visible = true;
+            }
         }
 
         /// <summary>
@@ -278,6 +291,11 @@ namespace ContactsAppUI
         private void SaveProject(Project project)
         {
             ProjectManager.Current.SaveProject(project);
+        }
+
+        private void OnQueryChanged(object sender, EventArgs e)
+        {
+            UpdateContactsList();
         }
     }
 }
