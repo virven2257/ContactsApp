@@ -108,9 +108,10 @@ namespace ContactsAppUI
             // 
             this.PhoneMaskedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.PhoneMaskedTextBox.Location = new System.Drawing.Point(63, 81);
+            this.PhoneMaskedTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
             this.PhoneMaskedTextBox.Mask = "+7 (000) 000-00-00";
             this.PhoneMaskedTextBox.Name = "PhoneMaskedTextBox";
-            this.PhoneMaskedTextBox.Size = new System.Drawing.Size(381, 20);
+            this.PhoneMaskedTextBox.Size = new System.Drawing.Size(364, 20);
             this.PhoneMaskedTextBox.TabIndex = 19;
             this.PhoneMaskedTextBox.TextChanged += new System.EventHandler(this.OnPhoneTextChanged);
             // 
@@ -129,8 +130,9 @@ namespace ContactsAppUI
             // 
             this.VkTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.VkTextBox.Location = new System.Drawing.Point(63, 134);
+            this.VkTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
             this.VkTextBox.Name = "VkTextBox";
-            this.VkTextBox.Size = new System.Drawing.Size(381, 20);
+            this.VkTextBox.Size = new System.Drawing.Size(364, 20);
             this.VkTextBox.TabIndex = 14;
             this.VkTextBox.TextChanged += new System.EventHandler(this.OnVkTextChanged);
             // 
@@ -149,8 +151,9 @@ namespace ContactsAppUI
             // 
             this.EmailTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.EmailTextBox.Location = new System.Drawing.Point(63, 107);
+            this.EmailTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
             this.EmailTextBox.Name = "EmailTextBox";
-            this.EmailTextBox.Size = new System.Drawing.Size(381, 20);
+            this.EmailTextBox.Size = new System.Drawing.Size(364, 20);
             this.EmailTextBox.TabIndex = 13;
             this.EmailTextBox.TextChanged += new System.EventHandler(this.OnEmailTextChanged);
             // 
@@ -202,8 +205,9 @@ namespace ContactsAppUI
             // 
             this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.NameTextBox.Location = new System.Drawing.Point(63, 29);
+            this.NameTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(381, 20);
+            this.NameTextBox.Size = new System.Drawing.Size(364, 20);
             this.NameTextBox.TabIndex = 7;
             this.NameTextBox.TextChanged += new System.EventHandler(this.OnNameTextChanged);
             // 
@@ -211,8 +215,9 @@ namespace ContactsAppUI
             // 
             this.SurnameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.SurnameTextBox.Location = new System.Drawing.Point(63, 3);
+            this.SurnameTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
             this.SurnameTextBox.Name = "SurnameTextBox";
-            this.SurnameTextBox.Size = new System.Drawing.Size(381, 20);
+            this.SurnameTextBox.Size = new System.Drawing.Size(364, 20);
             this.SurnameTextBox.TabIndex = 6;
             this.SurnameTextBox.TextChanged += new System.EventHandler(this.OnSurnameTextChanged);
             // 
