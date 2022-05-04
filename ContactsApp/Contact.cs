@@ -131,9 +131,9 @@ namespace ContactsApp
             get => _vkId;
             set
             {
-                if (!TextIsCorrect(value, MaxLength, true))
+                if (!TextIsCorrect(value, MaxVkLength, true))
                     throw new ArgumentException("Некорректный формат ID! Его длина не должна превышать " +
-                                                MaxLength + " символов.");
+                                                MaxVkLength + " символов.");
                 _vkId = value;
             }
         }

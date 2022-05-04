@@ -98,9 +98,9 @@ namespace ContactsApp.UnitTests
         
         [TestCase(null, "null недопустим",
             TestName = "Присвоение null в качестве почты")]
-        [TestCase("333333333333333333333333333333333333333333333333333333333333333333333333333333",
-            "Должно возникать исключение, если ID VK длиннее 50 символов",
-            TestName = "Присвоение неправильного ID VK больше 50 символов")]
+        [TestCase("3333333333333333333333333333333333333333333333333",
+            "Должно возникать исключение, если ID VK длиннее 15 символов",
+            TestName = "Присвоение неправильного ID VK больше 15 символов")]
         public void TestVkIdSet_ArgumentException(string wrongVk, string message)
         {
             Assert.Throws<ArgumentException>(
