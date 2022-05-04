@@ -107,7 +107,7 @@ namespace ContactsAppUI
         {
             try
             {
-                SelectedContact.VkId = NameTextBox.Text;
+                SelectedContact.VkId = VkTextBox.Text;
                 RemoveError((Control)sender);
             }
             catch (Exception exception)
