@@ -5,7 +5,7 @@
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
         <ProjectGuid>{8147554B-E0BF-4823-84F6-DA8A6D49E213}</ProjectGuid>
-        <OutputType>WinExe</OutputType>
+        <OutputType>Library</OutputType>
         <RootNamespace>ContactsApp</RootNamespace>
         <AssemblyName>ContactsApp</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
@@ -52,7 +52,6 @@
     <ItemGroup>
         <Compile Include="Contact.cs" />
         <Compile Include="PhoneNumber.cs" />
-        <Compile Include="Program.cs" />
         <Compile Include="Project.cs" />
         <Compile Include="ProjectManager.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
