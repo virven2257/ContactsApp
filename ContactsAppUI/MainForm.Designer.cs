@@ -194,6 +194,7 @@ namespace ContactsAppUI
             this.ContactsListBox.Size = new System.Drawing.Size(245, 329);
             this.ContactsListBox.TabIndex = 5;
             this.ContactsListBox.SelectedIndexChanged += new System.EventHandler(this.OnSelectedIndexChanged);
+            this.ContactsListBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBox_Contacts_KeyUp);
             // 
             // FindTextBox
             // 

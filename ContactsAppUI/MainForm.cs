@@ -292,6 +292,22 @@ namespace ContactsAppUI
         {
             ProjectManager.Current.SaveProject(project);
         }
+        
+        /// <summary>
+        /// Обработчик события нажатия кнопки Delete
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listBox_Contacts_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (ContactsListBox.SelectedIndex < 0)
+                    return;
+                if (UserWantsToDelete())
+                    RemoveContact();
+            }
+        }
 
         private void OnQueryChanged(object sender, EventArgs e)
         {
