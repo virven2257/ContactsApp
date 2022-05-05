@@ -74,6 +74,7 @@ namespace ContactsAppUI
 
         private void UpdateBirthdays()
         {
+            BdayListLabel.Text = "";
             List<string> birthdays = _project
                 .GetBirthdays(DateTime.Today)
                 .Select(i => i.LastName)
@@ -124,6 +125,7 @@ namespace ContactsAppUI
             UpdateContactsList();
             SelectedContact = index > -1 ? (Contact)ContactsListBox.SelectedItem : null;
             UpdateState();
+            UpdateBirthdays();
             SaveProject(_project);
         }
 
@@ -152,6 +154,7 @@ namespace ContactsAppUI
             }
 
             UpdateState();
+            UpdateBirthdays();
             SaveProject(_project);
         }
         
@@ -170,6 +173,7 @@ namespace ContactsAppUI
             if (result != DialogResult.OK) return;
             UpdateContactsList();
             UpdateState();
+            UpdateBirthdays();
             ContactsListBox.SelectedIndex = index;
             SaveProject(_project);
         }
